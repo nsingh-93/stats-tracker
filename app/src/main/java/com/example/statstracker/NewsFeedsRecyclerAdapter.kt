@@ -31,11 +31,11 @@ class NewsFeedRecyclerAdapter internal constructor(
     private val dayDateFormat = SimpleDateFormat("EEEE, MMMM dd, yyyy", Locale.getDefault())
     override fun getItemViewType(position: Int): Int {
         var showDayDivider = false
-        if (position < listMessages.size - 1) {
+        if (position < listNews.size - 1) {
             val lastTimestamp: Long =
-                Objects.requireNonNull<Any>(listMessages[position + 1]).getTime().toLong()
+                Objects.requireNonNull<Any>(listNews[position + 1]).getTime().toLong()
             val currentTimestamp: Long =
-                Objects.requireNonNull<Any>(listMessages[position]).getTime().toLong()
+                Objects.requireNonNull<Any>(listNews[position]).getTime().toLong()
             val lastDay = dayDateFormat.format(lastTimestamp)
             val currentDay = dayDateFormat.format(currentTimestamp)
             if (lastDay != null && lastDay != currentDay) {
@@ -44,7 +44,7 @@ class NewsFeedRecyclerAdapter internal constructor(
         } else {
             showDayDivider = true
         }
-        return if (listMessages[position].getFolderName().equals("sent")) {
+        return if (listNews[position].getFolderName().equals("sent")) {
             if (showDayDivider) VIEW_TYPE_USER_DAYBREAK else VIEW_TYPE_USER_DEFAULT
         } else {
             if (showDayDivider) VIEW_TYPE_OTHER_DAYBREAK else VIEW_TYPE_OTHER_DEFAULT
@@ -54,7 +54,7 @@ class NewsFeedRecyclerAdapter internal constructor(
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            VIEW_TYPE_OTHER_DEFAULT -> {
+            VIEW_TYPE_USER_DEFAULT -> {
             }
             else -> {
                 val defaultView: View = LayoutInflater.from(parent.context)
@@ -90,9 +90,9 @@ class NewsFeedRecyclerAdapter internal constructor(
             showDayDivider = true;
         }*/if (position > 0) {
             val nextUserName: String =
-                Objects.requireNonNull<Any>(listMessages[position - 1]).getDisplayName()
+                Objects.requireNonNull<Any>(listNews[position - 1]).getDisplayName()
             val nextTimestamp: Long =
-                Objects.requireNonNull<Any>(listMessages[position - 1]).getTime().toLong()
+                Objects.requireNonNull<Any>(listNews[position - 1]).getTime().toLong()
             val nextDay = dayDateFormat.format(nextTimestamp)
             if (folder == "inbox") {
                 if (nextUserName != null && nextUserName == userName) {
@@ -112,7 +112,7 @@ class NewsFeedRecyclerAdapter internal constructor(
                 }
             } else {
                 val nextFolderName: String = Objects.requireNonNull<Any>(
-                    listMessages[position - 1]
+                    listNews[position - 1]
                 ).getFolderName()
                 if (nextFolderName != null && nextFolderName == folder) {
                     nameVisibility = View.GONE
@@ -193,7 +193,7 @@ class NewsFeedRecyclerAdapter internal constructor(
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount(): Int {
-        return listMessages.size
+        return listNews.size
     }
 
     private fun selectListItem(message: Sms, tv: TextView, textBubble: LinearLayout) {
