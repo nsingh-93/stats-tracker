@@ -22,7 +22,6 @@ class NewsFeedRecyclerAdapter internal constructor(
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val listNews: List<News>
     private val context: Context
-    private var width: Int
     private var timestampWidth = 0
     private val hourDateFormat = SimpleDateFormat("h:mm a", Locale.getDefault())
 
@@ -212,29 +211,6 @@ class NewsFeedRecyclerAdapter internal constructor(
             }
             tv.setTextColor(context.resources.getColor(R.color.colorTitle))
         }
-    }
-
-    private fun setInitialMaxWidth(txtTimestamp: TextView, messageTextView: TextView) {
-        //Set the max width of the text bubbles based on the screen width and the size of the timestamp. There's probably
-        // a much more efficient way to do this! Checking the timeStampWidth == 0 helps but a more efficient method is required.
-        if (timestampWidth == 0) {
-            val vto = txtTimestamp.viewTreeObserver
-            vto.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
-                override fun onGlobalLayout() {
-                    timestampWidth =
-                        txtTimestamp.width + txtTimestamp.paddingEnd + txtTimestamp.paddingStart
-                    messageTextView.maxWidth = width - timestampWidth
-                    txtTimestamp.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                }
-            })
-        } else {
-            messageTextView.maxWidth = width - timestampWidth
-        }
-    }
-
-    fun setMaxWidth(width: Int) {
-        this.width = width
-        notifyDataSetChanged()
     }
 
     companion object {
