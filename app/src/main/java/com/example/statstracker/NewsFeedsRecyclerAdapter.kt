@@ -17,8 +17,7 @@ import java.util.*
 
 class NewsFeedRecyclerAdapter internal constructor(
     listNews: List<News>,
-    context: Context,
-    width: Int
+    context: Context
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val listNews: List<News>
@@ -33,9 +32,9 @@ class NewsFeedRecyclerAdapter internal constructor(
         var showDayDivider = false
         if (position < listNews.size - 1) {
             val lastTimestamp: Long =
-                Objects.requireNonNull<Any>(listNews[position + 1]).getTime().toLong()
+                (listNews[position + 1]).getTime().toLong()
             val currentTimestamp: Long =
-                Objects.requireNonNull<Any>(listNews[position]).getTime().toLong()
+                (listNews[position]).getTime().toLong()
             val lastDay = dayDateFormat.format(lastTimestamp)
             val currentDay = dayDateFormat.format(currentTimestamp)
             if (lastDay != null && lastDay != currentDay) {
@@ -247,6 +246,5 @@ class NewsFeedRecyclerAdapter internal constructor(
     init {
         this.listNews = listNews
         this.context = context
-        this.width = width
     }
 }

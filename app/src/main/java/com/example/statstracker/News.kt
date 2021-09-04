@@ -8,7 +8,7 @@ class News {
     private var _body: String? = null
     private var _url: String? = null
 
-    private var _time: String? = null
+    private lateinit var _time: String
     private var _image: Image? = null
 
     fun getId(): String? {
@@ -27,7 +27,7 @@ class News {
         return _url
     }
 
-    fun getTime(): String? {
+    fun getTime(): String {
         return _time
     }
 
@@ -47,7 +47,7 @@ class News {
         _body = body
     }
 
-    fun setTime(time: String?) {
+    fun setTime(time: String) {
         _time = time
     }
 
