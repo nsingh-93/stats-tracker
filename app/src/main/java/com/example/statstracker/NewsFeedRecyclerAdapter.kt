@@ -1,32 +1,21 @@
 package com.example.statstracker
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
-import android.media.Image
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.os.AsyncTask
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import java.text.SimpleDateFormat
 import java.util.*
-import android.graphics.Bitmap
-
-import android.graphics.BitmapFactory
-
-import android.widget.Toast
-
-import androidx.test.core.app.ApplicationProvider.getApplicationContext
-
-import android.os.AsyncTask
-import androidx.test.core.app.ApplicationProvider
-import java.io.InputStream
-import java.lang.Exception
-import java.net.URL
 
 
 class NewsFeedRecyclerAdapter internal constructor(
@@ -57,7 +46,7 @@ class NewsFeedRecyclerAdapter internal constructor(
         val headline: String? = newsItem.getHeadline()
         val body: String? = newsItem.getBody()
         val url: String? = newsItem.getUrl()
-        val timestamp: String? = newsItem.getTime()
+        val timestamp: Date? = newsItem.getTime()
         val image: String? = newsItem.getImage()
 
         when (holder.itemViewType) {
@@ -85,22 +74,52 @@ class NewsFeedRecyclerAdapter internal constructor(
             headline: String?,
             body: String?,
             url: String?,
-            timestamp: String?,
+            timestamp: Date?,
             image: String?
         ) {
-            txtTimeStamp.text = timestamp
+            val formatter = SimpleDateFormat("yyyy-MM-dd",  Locale.getDefault())
+            val dateAsString = formatter.format(timestamp)
+
+            txtTimeStamp.text = dateAsString
             titleTextView.text = headline
             //photoImageView.setImageURI(null)
             synopsisTextView.text = body
 
-            //DownloadImageFromInternet(photoImageView).execute(image);
-            photoImageView.setImageDrawable(context.getDrawable(R.drawable.test_image))
-            photoImageView.clipToOutline = true;
+            /*Glide.with(context)
+                .load(image)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .into(photoImageView)*/
+
+            DownloadImageFromInternet(photoImageView).execute(image)
+
         }
     }
 
     //Get image from URL
     //TODO - Add function to grab image and get either bitmap or URI to be used for news image
+    @SuppressLint("StaticFieldLeak")
+    @Suppress("DEPRECATION")
+    private inner class DownloadImageFromInternet(var imageView: ImageView) : AsyncTask<String, Void, Bitmap?>() {
+        init {
+        }
+        override fun doInBackground(vararg urls: String): Bitmap? {
+            val imageURL = urls[0]
+            var image: Bitmap? = null
+            try {
+                val `in` = java.net.URL(imageURL).openStream()
+                image = BitmapFactory.decodeStream(`in`)
+            }
+            catch (e: Exception) {
+                Log.e("Error Message", e.message.toString())
+                e.printStackTrace()
+            }
+            return image
+        }
+        override fun onPostExecute(result: Bitmap?) {
+            imageView.setImageBitmap(result)
+        }
+    }
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount(): Int {

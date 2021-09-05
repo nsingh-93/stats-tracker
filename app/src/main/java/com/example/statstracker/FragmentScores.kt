@@ -28,7 +28,7 @@ class FragmentScores : Fragment() {
             news.setHeadline("Headline $i")
             news.setBody("Description $i")
             news.setUrl("https://www.nhl.com/")
-            news.setTime("9/4/2021")
+            //news.setTime("9/4/2021")
             news.setImage("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Capitals-Maple_Leafs_%2834075134291%29.jpg/1200px-Capitals-Maple_Leafs_%2834075134291%29.jpg")
 
             newsList.add(news)

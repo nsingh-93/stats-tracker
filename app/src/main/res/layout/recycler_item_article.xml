@@ -31,7 +31,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/test_image"
             />
 
         <ImageView
@@ -70,6 +69,7 @@
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:maxLines="2"
             tools:text="Message test ets ou k bnk jn n ljnl jn jklbnkl bjk jbk bjjk bk bnkj njkjn jkl"
             app:layout_constraintBottom_toBottomOf="parent"/>
 

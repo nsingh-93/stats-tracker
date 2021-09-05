@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
                 tab.text = "Scores"
             }
         }.attach()
+
     }
 
     class MainActivityAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
