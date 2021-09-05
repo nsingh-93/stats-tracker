@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         override fun getItemCount(): Int = 2
 
         override fun createFragment(position: Int): Fragment {
-            // Return a NEW fragment instance in createFragment(int)
             val fragmentNews = FragmentNewsFeed()
             val fragmentScores = FragmentScores()
             fragmentNews.arguments = Bundle().apply {
