@@ -9,15 +9,15 @@ class News internal constructor(
     _url: String,
 
     _time: String,
-    _image: Image
+    _image: String
 ){
-    private lateinit var _id: String
-    private lateinit var _headline: String
-    private lateinit var _body: String
-    private lateinit var _url: String
+    private var _id: String = "test"
+    private var _headline: String = "test"
+    private var _body: String = "test"
+    private var _url: String = "test"
 
-    private lateinit var _time: String
-    private lateinit var _image: Image
+    private var _time: String = "test"
+    private var _image: String = "test"
 
     fun getId(): String {
         return _id
@@ -39,7 +39,7 @@ class News internal constructor(
         return _time
     }
 
-    fun getImage(): Image {
+    fun getImage(): String {
         return _image
     }
 
@@ -63,7 +63,7 @@ class News internal constructor(
         _url = url
     }
 
-    fun setImage(image: Image) {
+    fun setImage(image: String) {
         _image = image
     }
 }

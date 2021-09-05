@@ -23,6 +23,8 @@ import android.widget.Toast
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 
 import android.os.AsyncTask
+import androidx.test.core.app.ApplicationProvider
+import java.io.InputStream
 import java.lang.Exception
 import java.net.URL
 
@@ -57,7 +59,7 @@ class NewsFeedRecyclerAdapter internal constructor(
         val body: String = newsItem.getBody()
         val url: String = newsItem.getUrl()
         val timestamp: String = newsItem.getTime()
-        val image: Image = newsItem.getImage()
+        val image: String = newsItem.getImage()
 
         when (holder.itemViewType) {
             VIEW_TYPE_NEWS_DEFAULT -> (holder as UserDefaultHolder).bind(
@@ -85,19 +87,21 @@ class NewsFeedRecyclerAdapter internal constructor(
             body: String,
             url: String,
             timestamp: String,
-            image: Image
+            image: String
         ) {
             txtTimeStamp.text = timestamp
             titleTextView.text = headline
             //photoImageView.setImageURI(null)
             synopsisTextView.text = body
+
+            DownloadImageFromInternet(photoImageView).execute(image);
         }
     }
 
     //Get image from URL
     private class DownloadImageFromInternet(imageView: ImageView) :
         AsyncTask<String?, Void?, Bitmap?>() {
-        var imageView: ImageView
+        var imageView: ImageView = imageView
         override fun doInBackground(vararg urls: String?): Bitmap? {
             val imageURL = urls[0]
             var bimage: Bitmap? = null
@@ -105,7 +109,6 @@ class NewsFeedRecyclerAdapter internal constructor(
                 val `in`: InputStream = URL(imageURL).openStream()
                 bimage = BitmapFactory.decodeStream(`in`)
             } catch (e: Exception) {
-                Log.e("Error Message", e.message)
                 e.printStackTrace()
             }
             return bimage
@@ -115,14 +118,6 @@ class NewsFeedRecyclerAdapter internal constructor(
             imageView.setImageBitmap(result)
         }
 
-        init {
-            this.imageView = imageView
-            Toast.makeText(
-                ApplicationProvider.getApplicationContext<Context>(),
-                "Please wait, it may take a few minute...",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
