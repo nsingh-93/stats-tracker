@@ -112,7 +112,7 @@ class FragmentNewsFeed : Fragment() {
         }
 
         // Add the request to the RequestQueue.
-        //requestQueue?.add(stringRequest)
+        requestQueue?.add(stringRequest)
 
         return newsView
     }
