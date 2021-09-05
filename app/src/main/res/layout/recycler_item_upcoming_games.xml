@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/scoreCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/scoreCard"
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:elevation="2dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageAwayTeam"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
+
+            <ImageView
+                android:id="@+id/imageHomeTeam"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/textAwayAbbreviation"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:text="AAA"
+                android:textColor="#AAAAAA"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageAwayTeam"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textHomeAbbreviation"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text="AAA"
+                android:textColor="#AAAAAA"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageHomeTeam"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textAwayStreak"
+                android:layout_width="45dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginStart="0dp"
+                android:gravity="left"
+                android:text="00-00-00"
+                android:textSize="9dp"
+                app:layout_constraintTop_toBottomOf="@+id/textAwayAbbreviation"
+                app:layout_constraintStart_toStartOf="@id/textAwayAbbreviation" />
+
+            <TextView
+                android:id="@+id/textHomeStreak"
+                android:layout_width="45dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginStart="0dp"
+                android:gravity="left"
+                android:text="00-00-00"
+                android:textSize="9dp"
+                app:layout_constraintTop_toBottomOf="@+id/textHomeAbbreviation"
+                app:layout_constraintStart_toStartOf="@id/textHomeAbbreviation" />
+
+            <TextView
+                android:id="@+id/textGameDate"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="1dp"
+                android:gravity="center"
+                android:text="Sunday, October 31"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/textGameStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:text="GAME IN PROGRESS"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
