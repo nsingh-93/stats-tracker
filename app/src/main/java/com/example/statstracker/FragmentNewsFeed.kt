@@ -51,7 +51,6 @@ class FragmentNewsFeed : Fragment() {
         val linearLayoutManager = LinearLayoutManager(requireContext())
         newsRecyclerView.layoutManager = linearLayoutManager
 
-        //newsRecyclerAdapter.notifyDataSetChanged()
         return newsView
     }
 
