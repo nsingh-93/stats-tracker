@@ -2,68 +2,68 @@ package com.example.statstracker
 
 import android.media.Image
 
-class News internal constructor(
-    _id: String,
-    _headline: String,
-    _body: String,
-    _url: String,
+abstract class News internal constructor(
+    _id: String?,
+    _headline: String?,
+    _body: String?,
+    _url: String?,
 
-    _time: String,
-    _image: String
+    _time: String?,
+    _image: String?
 ){
-    private var _id: String = "test"
-    private var _headline: String = "test"
-    private var _body: String = "test"
-    private var _url: String = "test"
+    private var _id: String? = "1"
+    private var _headline: String? = "test"
+    private var _body: String? = "test"
+    private var _url: String? = "test"
 
-    private var _time: String = "test"
-    private var _image: String = "test"
+    private var _time: String? = "test"
+    private var _image: String? = "test"
 
-    fun getId(): String {
+    fun getId(): String? {
         return _id
     }
 
-    fun getHeadline(): String {
+    fun getHeadline(): String? {
         return _headline
     }
 
-    fun getBody(): String {
+    fun getBody(): String? {
         return _body
     }
 
-    fun getUrl(): String {
+    fun getUrl(): String? {
         return _url
     }
 
-    fun getTime(): String {
+    fun getTime(): String? {
         return _time
     }
 
-    fun getImage(): String {
+    fun getImage(): String? {
         return _image
     }
 
-    fun setId(id: String) {
+    fun setId(id: String?) {
         _id = id
     }
 
-    fun setHeadline(headline: String) {
+    fun setHeadline(headline: String?) {
         _headline = headline
     }
 
-    fun setBody(body: String) {
+    fun setBody(body: String?) {
         _body = body
     }
 
-    fun setTime(time: String) {
+    fun setTime(time: String?) {
         _time = time
     }
 
-    fun setUrl(url: String) {
+    fun setUrl(url: String?) {
         _url = url
     }
 
-    fun setImage(image: String) {
+    fun setImage(image: String?) {
         _image = image
     }
 }

@@ -36,7 +36,6 @@ class NewsFeedRecyclerAdapter internal constructor(
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val listNews: List<News> = listNews
     private val context: Context = context
-    private var timestampWidth = 0
     private val hourDateFormat = SimpleDateFormat("h:mm a", Locale.getDefault())
 
     //private SimpleDateFormat hour24DateFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
@@ -55,11 +54,11 @@ class NewsFeedRecyclerAdapter internal constructor(
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val newsItem: News = listNews[position]
-        val headline: String = newsItem.getHeadline()
-        val body: String = newsItem.getBody()
-        val url: String = newsItem.getUrl()
-        val timestamp: String = newsItem.getTime()
-        val image: String = newsItem.getImage()
+        val headline: String? = newsItem.getHeadline()
+        val body: String? = newsItem.getBody()
+        val url: String? = newsItem.getUrl()
+        val timestamp: String? = newsItem.getTime()
+        val image: String? = newsItem.getImage()
 
         when (holder.itemViewType) {
             VIEW_TYPE_NEWS_DEFAULT -> (holder as UserDefaultHolder).bind(
@@ -83,11 +82,11 @@ class NewsFeedRecyclerAdapter internal constructor(
         var txtTimeStamp: TextView = v.findViewById(R.id.txtTimestamp)
         fun bind(
             newsItem: News,
-            headline: String,
-            body: String,
-            url: String,
-            timestamp: String,
-            image: String
+            headline: String?,
+            body: String?,
+            url: String?,
+            timestamp: String?,
+            image: String?
         ) {
             txtTimeStamp.text = timestamp
             titleTextView.text = headline
