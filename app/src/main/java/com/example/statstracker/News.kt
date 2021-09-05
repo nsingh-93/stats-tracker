@@ -2,21 +2,13 @@ package com.example.statstracker
 
 import android.media.Image
 
-abstract class News /*internal constructor(
-    _id: String?,
-    _headline: String?,
-    _body: String?,
-    _url: String?,
+abstract class News {
+    private var _headline: String? = "Headline"
+    private var _body: String? = "Body"
+    private var _url: String? = "URL"
 
-    _time: String?,
-    _image: String?
-)*/{
-    private var _headline: String? = "test"
-    private var _body: String? = "test"
-    private var _url: String? = "test"
-
-    private var _time: String? = "test"
-    private var _image: String? = "test"
+    private var _time: String? = "Time"
+    private var _image: String? = "Image"
 
     fun getHeadline(): String? {
         return _headline

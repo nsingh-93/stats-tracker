@@ -100,26 +100,7 @@ class NewsFeedRecyclerAdapter internal constructor(
     }
 
     //Get image from URL
-    private class DownloadImageFromInternet(imageView: ImageView) :
-        AsyncTask<String?, Void?, Bitmap?>() {
-        var imageView: ImageView = imageView
-        override fun doInBackground(vararg urls: String?): Bitmap? {
-            val imageURL = urls[0]
-            var bimage: Bitmap? = null
-            try {
-                val `in`: InputStream = URL(imageURL).openStream()
-                bimage = BitmapFactory.decodeStream(`in`)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-            return bimage
-        }
-
-        override fun onPostExecute(result: Bitmap?) {
-            imageView.setImageBitmap(result)
-        }
-
-    }
+    //TODO - Add function to grab image and get either bitmap or URI to be used for news image
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount(): Int {
