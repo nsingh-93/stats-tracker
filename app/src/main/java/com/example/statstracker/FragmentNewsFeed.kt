@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import java.util.ArrayList
 
 class FragmentNewsFeed : Fragment() {
     override fun onCreateView(
@@ -16,7 +17,20 @@ class FragmentNewsFeed : Fragment() {
     ): View? {
         var newsView: View = inflater.inflate(R.layout.frag_news, container, false)
         var newsRecyclerView: RecyclerView = newsView.findViewById(R.id.newsRecyclerView)
-        var newsList: List<News> = listOf()
+
+        val newsList: ArrayList<News> = ArrayList()
+
+        for (i in 0 until 10) {
+            newsList += News(
+                "$i",
+                "Headline $i",
+                "Description $i",
+                "https://www.nhl.com/",
+                "9/4/2021",
+                resources.getDrawable(R.drawable.test_image,null)
+            )
+        }
+
         var newsRecyclerAdapter: NewsFeedRecyclerAdapter = NewsFeedRecyclerAdapter(newsList, requireContext())
         return newsView
     }

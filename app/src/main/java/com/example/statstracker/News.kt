@@ -2,7 +2,15 @@ package com.example.statstracker
 
 import android.media.Image
 
-class News {
+class News internal constructor(
+    _id: String,
+    _headline: String,
+    _body: String,
+    _url: String,
+
+    _time: String,
+    _image: Image
+){
     private lateinit var _id: String
     private lateinit var _headline: String
     private lateinit var _body: String

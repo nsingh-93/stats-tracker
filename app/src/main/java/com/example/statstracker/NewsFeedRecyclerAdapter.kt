@@ -14,6 +14,17 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import java.text.SimpleDateFormat
 import java.util.*
+import android.graphics.Bitmap
+
+import android.graphics.BitmapFactory
+
+import android.widget.Toast
+
+import androidx.test.core.app.ApplicationProvider.getApplicationContext
+
+import android.os.AsyncTask
+import java.lang.Exception
+import java.net.URL
 
 
 class NewsFeedRecyclerAdapter internal constructor(
@@ -80,6 +91,37 @@ class NewsFeedRecyclerAdapter internal constructor(
             titleTextView.text = headline
             //photoImageView.setImageURI(null)
             synopsisTextView.text = body
+        }
+    }
+
+    //Get image from URL
+    private class DownloadImageFromInternet(imageView: ImageView) :
+        AsyncTask<String?, Void?, Bitmap?>() {
+        var imageView: ImageView
+        override fun doInBackground(vararg urls: String?): Bitmap? {
+            val imageURL = urls[0]
+            var bimage: Bitmap? = null
+            try {
+                val `in`: InputStream = URL(imageURL).openStream()
+                bimage = BitmapFactory.decodeStream(`in`)
+            } catch (e: Exception) {
+                Log.e("Error Message", e.message)
+                e.printStackTrace()
+            }
+            return bimage
+        }
+
+        override fun onPostExecute(result: Bitmap?) {
+            imageView.setImageBitmap(result)
+        }
+
+        init {
+            this.imageView = imageView
+            Toast.makeText(
+                ApplicationProvider.getApplicationContext<Context>(),
+                "Please wait, it may take a few minute...",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
