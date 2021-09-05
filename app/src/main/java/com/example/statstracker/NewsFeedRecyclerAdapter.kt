@@ -93,7 +93,9 @@ class NewsFeedRecyclerAdapter internal constructor(
             //photoImageView.setImageURI(null)
             synopsisTextView.text = body
 
-            DownloadImageFromInternet(photoImageView).execute(image);
+            //DownloadImageFromInternet(photoImageView).execute(image);
+            photoImageView.setImageDrawable(context.getDrawable(R.drawable.test_image))
+            photoImageView.clipToOutline = true;
         }
     }
 

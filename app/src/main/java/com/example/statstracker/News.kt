@@ -2,7 +2,7 @@ package com.example.statstracker
 
 import android.media.Image
 
-abstract class News internal constructor(
+abstract class News /*internal constructor(
     _id: String?,
     _headline: String?,
     _body: String?,
@@ -10,18 +10,13 @@ abstract class News internal constructor(
 
     _time: String?,
     _image: String?
-){
-    private var _id: String? = "1"
+)*/{
     private var _headline: String? = "test"
     private var _body: String? = "test"
     private var _url: String? = "test"
 
     private var _time: String? = "test"
     private var _image: String? = "test"
-
-    fun getId(): String? {
-        return _id
-    }
 
     fun getHeadline(): String? {
         return _headline
@@ -41,10 +36,6 @@ abstract class News internal constructor(
 
     fun getImage(): String? {
         return _image
-    }
-
-    fun setId(id: String?) {
-        _id = id
     }
 
     fun setHeadline(headline: String?) {
