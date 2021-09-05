@@ -47,6 +47,6 @@ dependencies {
     //For NewsAPI
     implementation 'com.google.code.gson:gson:2.8.6'
 
-    //Coroutines
+    //HTTP Requests
     implementation 'com.android.volley:volley:1.2.1'
 }
