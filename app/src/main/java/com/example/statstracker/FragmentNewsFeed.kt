@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import java.util.ArrayList
+import java.text.SimpleDateFormat
+import java.util.*
 
 class FragmentNewsFeed : Fragment() {
     override fun onCreateView(
@@ -32,13 +34,7 @@ class FragmentNewsFeed : Fragment() {
             news.setImage("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Capitals-Maple_Leafs_%2834075134291%29.jpg/1200px-Capitals-Maple_Leafs_%2834075134291%29.jpg")
 
             newsList.add(news)
-
-            Log.i("NEWS",(if (news.getHeadline() != null) news.getHeadline() else "empty")!!)
         }
-
-        Log.i("NEWS",
-            (if (newsList[0].getHeadline() != null) newsList[0].getHeadline() else "empty")!!
-        )
 
         val newsRecyclerAdapter = NewsFeedRecyclerAdapter(newsList, requireContext())
         newsRecyclerView.adapter = newsRecyclerAdapter
@@ -47,10 +43,6 @@ class FragmentNewsFeed : Fragment() {
         newsRecyclerView.layoutManager = linearLayoutManager
 
         return newsView
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 
     companion object {
