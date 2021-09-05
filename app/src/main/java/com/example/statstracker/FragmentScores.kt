@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.ArrayList
 
-class FragmentNewsFeed : Fragment() {
+class FragmentScores : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,7 +55,7 @@ class FragmentNewsFeed : Fragment() {
 
     companion object {
         fun newInstance(text: String?) {
-            val f = FragmentNewsFeed()
+            val f = FragmentScores()
             val b = Bundle()
             b.putString("fragment", text)
             f.arguments = b
