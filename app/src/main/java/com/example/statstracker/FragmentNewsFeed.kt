@@ -57,7 +57,7 @@ class FragmentNewsFeed : Fragment() {
         fun newInstance(text: String?) {
             val f = FragmentNewsFeed()
             val b = Bundle()
-            b.putString("msg", text)
+            b.putString("fragment", text)
             f.arguments = b
         }
     }
