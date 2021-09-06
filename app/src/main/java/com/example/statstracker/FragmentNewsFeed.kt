@@ -71,16 +71,18 @@ class FragmentNewsFeed : Fragment() {
                     }
 
                     for (i in 0 until numItems) {
-                        val news = object : News() {}
+                        if (gsonParse.articles[i].source.name != "Yahoo Entertainment") {
+                            val news = object : News() {}
 
-                        news.setSource(gsonParse.articles[i].source.name)
-                        news.setHeadline(gsonParse.articles[i].title)
-                        news.setBody(gsonParse.articles[i].description)
-                        news.setUrl(gsonParse.articles[i].url)
-                        news.setTime(gsonParse.articles[i].publishedAt)
-                        news.setImage(gsonParse.articles[i].urlToImage)
+                            news.setSource(gsonParse.articles[i].source.name)
+                            news.setHeadline(gsonParse.articles[i].title)
+                            news.setBody(gsonParse.articles[i].description)
+                            news.setUrl(gsonParse.articles[i].url)
+                            news.setTime(gsonParse.articles[i].publishedAt)
+                            news.setImage(gsonParse.articles[i].urlToImage)
 
-                        newsList.add(news)
+                            newsList.add(news)
+                        }
                     }
                 }
 
