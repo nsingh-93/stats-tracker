@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -20,7 +20,6 @@
             android:id="@+id/scoreCard"
             android:layout_width="match_parent"
             android:layout_height="74dp"
-            android:elevation="2dp"
             android:orientation="vertical">
 
             <ImageView
@@ -49,8 +48,8 @@
 
             <TextView
                 android:id="@+id/textAwayAbbreviation"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:gravity="center"
                 android:text="AAA"
@@ -62,8 +61,8 @@
 
             <TextView
                 android:id="@+id/textHomeAbbreviation"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:gravity="center"
                 android:text="AAA"
@@ -103,27 +102,27 @@
 
             <TextView
                 android:id="@+id/textAwayStreak"
-                android:layout_width="45dp"
-                android:layout_height="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:layout_marginStart="0dp"
-                android:gravity="left"
                 android:text="00-00-00"
                 android:textSize="9dp"
                 app:layout_constraintTop_toBottomOf="@+id/textAwayAbbreviation"
-                app:layout_constraintStart_toStartOf="@id/textAwayAbbreviation" />
+                app:layout_constraintStart_toStartOf="@id/textAwayAbbreviation"
+                app:layout_constraintEnd_toEndOf="@id/textAwayAbbreviation"/>
 
             <TextView
                 android:id="@+id/textHomeStreak"
-                android:layout_width="45dp"
-                android:layout_height="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:layout_marginStart="0dp"
-                android:gravity="left"
                 android:text="00-00-00"
                 android:textSize="9dp"
                 app:layout_constraintTop_toBottomOf="@+id/textHomeAbbreviation"
-                app:layout_constraintStart_toStartOf="@id/textHomeAbbreviation" />
+                app:layout_constraintStart_toStartOf="@id/textHomeAbbreviation"
+                app:layout_constraintEnd_toEndOf="@id/textHomeAbbreviation"/>
 
             <TextView
                 android:id="@+id/textGameDate"

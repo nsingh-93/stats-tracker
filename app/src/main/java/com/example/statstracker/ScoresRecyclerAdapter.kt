@@ -23,6 +23,7 @@ import android.widget.Toast
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 
 import android.os.AsyncTask
+import android.util.Log
 import android.view.ViewTreeObserver
 import androidx.test.core.app.ApplicationProvider
 import java.io.InputStream
@@ -84,6 +85,8 @@ class ScoresRecyclerAdapter internal constructor(
         val homeTeamLogo: String? = score.getHomeLogoSrc()
         val awayTeamLogo: String? = score.getAwayLogoSrc()
         val gameDate = dayDateFormat.format(score.getGameDate())
+
+        Log.i("SCORESAdap",listScores[position].getGameStatus() + ", " + (listScores[position].getGameStatus() == "Preview"))
 
         when (holder.itemViewType) {
             ScoresRecyclerAdapter.VIEW_TYPE_SCORE_FINISHED -> (holder as ScoresRecyclerAdapter.ScoreFinishedHolder).bind(

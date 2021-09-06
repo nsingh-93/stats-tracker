@@ -40,6 +40,8 @@ class FragmentScores : Fragment() {
         scoresRecyclerView.adapter = scoresRecyclerAdapter
 
         val linearLayoutManager = LinearLayoutManager(requireContext())
+        linearLayoutManager.reverseLayout = true
+        linearLayoutManager.stackFromEnd = true
         scoresRecyclerView.layoutManager = linearLayoutManager
 
         val url = "https://statsapi.web.nhl.com/api/v1/schedule"
@@ -47,9 +49,9 @@ class FragmentScores : Fragment() {
         val cal = Calendar.getInstance()
         val formatter = SimpleDateFormat("yyyy-MM-dd",  Locale.getDefault())
         val startDate = cal.add(Calendar.DATE, -1)
-        val startDateAsString = "2020-12-25"//formatter.format(startDate)
+        val startDateAsString = "2021-07-05"//formatter.format(startDate)
         val endDate = cal.add(Calendar.DATE, 1)
-        val endDateAsString = "2020-12-28"//formatter.format(endDate)
+        val endDateAsString = "2021-07-08"//formatter.format(endDate)
 
         val query = "$url?startDate=$startDateAsString&endDate=$endDateAsString"
 
@@ -62,6 +64,8 @@ class FragmentScores : Fragment() {
                 val gsonParse = gson.fromJson(scoresJsonObject.toString(), ScoresResult::class.java)
 
                 var totalGames = gsonParse.totalGames
+
+                Log.i("SCORESFrag", "Total Games: $totalGames")
 
                 if(totalGames != 0){
 
@@ -89,6 +93,8 @@ class FragmentScores : Fragment() {
                             score.setGameDate(dates.date)
                             score.setGameStatus(game.status.abstractGameState)
 
+                            Log.i("SCORES",game.status.abstractGameState + ", " + (game.status.abstractGameState == "Preview"))
+
                             scoresList.add(score)
                         }
                     }
@@ -113,7 +119,7 @@ class FragmentScores : Fragment() {
 
         // Add the request to the RequestQueue.
         //TODO Uncomment request below
-        //requestQueue.add(stringRequest)
+        requestQueue.add(stringRequest)
 
         //-------------------------------------------------
 
