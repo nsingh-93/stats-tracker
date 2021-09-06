@@ -25,8 +25,8 @@ data class ScoreDates(
     var totalGames:Int,
     var totalMatches:Int,
     var games:List<Games>,
-    var events:Events,
-    var matches:Matches
+    var events:List<Events>,
+    var matches:List<Matches>
 )
 
 data class Games(

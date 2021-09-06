@@ -40,9 +40,9 @@ class ScoresRecyclerAdapter internal constructor(
 
     override fun getItemViewType(position: Int): Int =
         when {
-            listScores[position].getGameStatus() == "FINAL" -> VIEW_TYPE_SCORE_FINISHED
-            listScores[position].getGameStatus() == "LIVE" -> VIEW_TYPE_SCORE_PROGRESS
-            listScores[position].getGameStatus() == "PREVIEW" -> VIEW_TYPE_SCORE_UPCOMING
+            listScores[position].getGameStatus() == "Final" -> VIEW_TYPE_SCORE_FINISHED
+            listScores[position].getGameStatus() == "Live" -> VIEW_TYPE_SCORE_PROGRESS
+            listScores[position].getGameStatus() == "Preview" -> VIEW_TYPE_SCORE_UPCOMING
             else -> VIEW_TYPE_SCORE_UPCOMING
         }
 
