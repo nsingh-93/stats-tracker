@@ -130,8 +130,8 @@ class ScoresRecyclerAdapter internal constructor(
 
     private inner class ScoreFinishedHolder internal constructor(v: View) :
         RecyclerView.ViewHolder(v) {
-        var imageAwayTeam: ImageView = v.findViewById(R.id.imageAwayTeam)
-        var imageHomeTeam: ImageView = v.findViewById(R.id.imageHomeTeam)
+        /*var imageAwayTeam: ImageView = v.findViewById(R.id.imageAwayTeam)
+        var imageHomeTeam: ImageView = v.findViewById(R.id.imageHomeTeam)*/
         var textAwayAbbr: TextView = v.findViewById(R.id.textAwayAbbreviation)
         var textHomeAbbr: TextView = v.findViewById(R.id.textHomeAbbreviation)
         var textAwayScore: TextView = v.findViewById(R.id.textAwayScore)

@@ -50,25 +50,27 @@
                 android:id="@+id/textAwayAbbreviation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:gravity="center"
-                android:text="AAA"
-                android:textColor="#AAAAAA"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageAwayTeam"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textHomeAbbreviation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:gravity="center"
                 android:text="AAA"
                 android:textColor="#AAAAAA"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageAwayTeam"
+                app:layout_constraintEnd_toStartOf="@id/textAwayScore"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textHomeAbbreviation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:text="AAA"
+                android:textColor="#AAAAAA"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textHomeScore"
                 app:layout_constraintEnd_toStartOf="@+id/imageHomeTeam"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -76,28 +78,28 @@
                 android:id="@+id/textAwayScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="65dp"
                 android:gravity="center"
                 android:text="##"
                 android:textColor="@color/black"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textAwayAbbreviation"
+                app:layout_constraintStart_toEndOf="@+id/imageAwayTeam"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textHomeScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="65dp"
                 android:gravity="center"
                 android:text="##"
                 android:textColor="@color/black"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textHomeAbbreviation"
+                app:layout_constraintEnd_toStartOf="@+id/imageHomeTeam"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView

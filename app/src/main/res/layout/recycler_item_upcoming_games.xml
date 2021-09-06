@@ -80,7 +80,8 @@
                 android:text="00-00-00"
                 android:textSize="9dp"
                 app:layout_constraintTop_toBottomOf="@+id/textAwayAbbreviation"
-                app:layout_constraintStart_toStartOf="@id/textAwayAbbreviation" />
+                app:layout_constraintStart_toStartOf="@id/textAwayAbbreviation"
+                app:layout_constraintEnd_toEndOf="@id/textAwayAbbreviation"/>
 
             <TextView
                 android:id="@+id/textHomeStreak"
