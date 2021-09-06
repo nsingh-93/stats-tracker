@@ -37,12 +37,6 @@ class FragmentNewsFeed : Fragment() {
         val linearLayoutManager = LinearLayoutManager(requireContext())
         newsRecyclerView.layoutManager = linearLayoutManager
 
-        newsList.add(news)
-
-
-        val newsRecyclerAdapter = NewsFeedRecyclerAdapter(newsList, requireContext())
-        newsRecyclerView.adapter = newsRecyclerAdapter
-
 
         //----------------------------------------------------------------------------------------------
 
