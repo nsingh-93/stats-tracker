@@ -70,8 +70,6 @@ class FragmentNewsFeed : Fragment() {
                         10
                     }
 
-                    Log.i("NEWS","Items: " + numItems + ", Articles: " + gsonParse.articles.size)
-
                     for (i in 0 until numItems) {
                         val news = object : News() {}
 
@@ -91,7 +89,6 @@ class FragmentNewsFeed : Fragment() {
                 requestQueue.stop()
             },
             Response.ErrorListener { error ->
-                //tvStatus.text  = error.toString()
                 Log.d("NEWS", "error => $error")
                 requestQueue.stop()
             }
@@ -106,7 +103,7 @@ class FragmentNewsFeed : Fragment() {
 
         // Add the request to the RequestQueue.
         //TODO Uncomment request below
-        requestQueue.add(stringRequest)
+        //requestQueue.add(stringRequest)
 
         //-------------------------------------------------
 
