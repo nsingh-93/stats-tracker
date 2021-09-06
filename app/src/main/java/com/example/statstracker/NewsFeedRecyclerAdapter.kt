@@ -2,8 +2,10 @@ package com.example.statstracker
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.AsyncTask
 import android.util.Log
 import android.view.LayoutInflater
@@ -43,6 +45,7 @@ class NewsFeedRecyclerAdapter internal constructor(
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val newsItem: News = listNews[position]
+        val source: String? = newsItem.getSource()
         val headline: String? = newsItem.getHeadline()
         val body: String? = newsItem.getBody()
         val url: String? = newsItem.getUrl()
@@ -52,6 +55,7 @@ class NewsFeedRecyclerAdapter internal constructor(
         when (holder.itemViewType) {
             VIEW_TYPE_NEWS_DEFAULT -> (holder as UserDefaultHolder).bind(
                 newsItem,
+                source,
                 headline,
                 body,
                 url,
@@ -59,25 +63,32 @@ class NewsFeedRecyclerAdapter internal constructor(
                 image
             )
         }
+
+        holder.itemView.setOnClickListener {
+            val appsIntent = Intent(Intent.ACTION_VIEW)
+            appsIntent.data = Uri.parse(url)
+            context.startActivity(appsIntent)
+        }
     }
 
     //ViewHolders
     private inner class UserDefaultHolder internal constructor(v: View) :
         RecyclerView.ViewHolder(v) {
+        var txtSource: TextView = v.findViewById(R.id.txtSource)
         var photoImageView: ImageView = v.findViewById(R.id.photoImageView)
-        var newsCard: ConstraintLayout = v.findViewById(R.id.newsCard)
         var titleTextView: TextView = v.findViewById(R.id.titleTextView)
         var synopsisTextView: TextView = v.findViewById(R.id.synopsisTextView)
         var txtTimeStamp: TextView = v.findViewById(R.id.txtTimestamp)
         fun bind(
             newsItem: News,
+            source: String?,
             headline: String?,
             body: String?,
             url: String?,
             timestamp: Date?,
             image: String?
         ) {
-            val formatter = SimpleDateFormat("yyyy-MM-dd",  Locale.getDefault())
+            val formatter = SimpleDateFormat("MMM dd, yyyy",  Locale.getDefault())
             val dateAsString = formatter.format(timestamp)
 
             txtTimeStamp.text = dateAsString
@@ -85,11 +96,7 @@ class NewsFeedRecyclerAdapter internal constructor(
             //photoImageView.setImageURI(null)
             synopsisTextView.text = body
 
-            /*Glide.with(context)
-                .load(image)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .skipMemoryCache(true)
-                .into(photoImageView)*/
+            txtSource.text = source
 
             DownloadImageFromInternet(photoImageView).execute(image)
 

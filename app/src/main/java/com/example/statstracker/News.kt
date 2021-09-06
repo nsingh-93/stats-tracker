@@ -3,12 +3,17 @@ package com.example.statstracker
 import java.util.*
 
 abstract class News {
+    private var _source: String? = "Source"
     private var _headline: String? = "Headline"
     private var _body: String? = "Body"
     private var _url: String? = "URL"
 
     private var _time: Date? = Date()
     private var _image: String? = "Image"
+
+    fun getSource(): String? {
+        return _source
+    }
 
     fun getHeadline(): String? {
         return _headline
@@ -28,6 +33,10 @@ abstract class News {
 
     fun getImage(): String? {
         return _image
+    }
+
+    fun setSource(source: String?) {
+        _source = source
     }
 
     fun setHeadline(headline: String?) {
