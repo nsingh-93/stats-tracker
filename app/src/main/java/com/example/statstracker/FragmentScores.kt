@@ -51,7 +51,7 @@ class FragmentScores : Fragment() {
         val startDate = cal.add(Calendar.DATE, -1)
         val startDateAsString = "2021-06-20"//formatter.format(startDate)
         val endDate = cal.add(Calendar.DATE, 1)
-        val endDateAsString = "2021-10-20"//formatter.format(endDate)
+        val endDateAsString = "2021-09-25"//formatter.format(endDate)
 
         val query = "$url?startDate=$startDateAsString&endDate=$endDateAsString"
 
