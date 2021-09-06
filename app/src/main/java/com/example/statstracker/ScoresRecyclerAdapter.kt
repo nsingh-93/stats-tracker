@@ -38,9 +38,13 @@ class ScoresRecyclerAdapter internal constructor(
     private val context: Context = context
     private val dayDateFormat = SimpleDateFormat("EEEE, MMMM dd", Locale.getDefault())
 
-    override fun getItemViewType(position: Int): Int {
-        return VIEW_TYPE_SCORE_FINISHED
-    }
+    override fun getItemViewType(position: Int): Int =
+        when {
+            listScores[position].getGameStatus() == "FINAL" -> VIEW_TYPE_SCORE_FINISHED
+            listScores[position].getGameStatus() == "LIVE" -> VIEW_TYPE_SCORE_PROGRESS
+            listScores[position].getGameStatus() == "PREVIEW" -> VIEW_TYPE_SCORE_UPCOMING
+            else -> VIEW_TYPE_SCORE_UPCOMING
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {

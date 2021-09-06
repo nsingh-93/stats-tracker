@@ -16,6 +16,8 @@ abstract class Scores {
     private var _awayTeamStreak: String? = "0-0-0"
     private var _awayLogoSrc: String? = "@tools:sample/avatars"
 
+    private var _gameStatus: String? = "PREVIEW"
+
     private var _gameDate: Date? = Date()
 
     fun getHomeTeam(): String? {
@@ -62,6 +64,10 @@ abstract class Scores {
         return _gameDate
     }
 
+    fun getGameStatus(): String? {
+        return _gameStatus
+    }
+
     fun setHomeTeam(homeTeam: String?) {
         _homeTeam = homeTeam
     }
@@ -104,5 +110,9 @@ abstract class Scores {
 
     fun setGameDate(gameDate: Date?) {
         _gameDate = gameDate
+    }
+
+    fun setGameStatus(gameStatus: String?) {
+        _gameStatus = gameStatus
     }
 }
