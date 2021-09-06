@@ -103,7 +103,7 @@ class FragmentNewsFeed : Fragment() {
 
         // Add the request to the RequestQueue.
         //TODO Uncomment request below
-        //requestQueue.add(stringRequest)
+        requestQueue.add(stringRequest)
 
         //-------------------------------------------------
 
